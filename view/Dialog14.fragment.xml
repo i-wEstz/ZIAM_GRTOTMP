@@ -1,0 +1,63 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog afterClose="afterClose" id="dialog14" horizontalScrolling="true" showHeader="true" state="None" stretch="true" title="BATCH INFORMATION" type="Standard" verticalScrolling="true">
+        <content>
+            <ObjectHeader id="ObjH2" intro="{dialog>/number}" title="{dialog>/description}" icon="sap-icon://product" number="Ordered : {dialog>/ordered} {/uom}" numberUnit="" numberState="None" showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Translucent" condensed="false">
+                <attributes/>
+                <statuses/>
+            </ObjectHeader>
+            <Toolbar width="auto" height="46px" design="Solid" visible="true" enabled="true">
+                <content>
+                    <Title id="batchTitle" text="Batch" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+                    <ToolbarSpacer width=""/>
+                    <Button text="" type="Transparent" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onAdd" />
+                    <Button text="" type="Transparent" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onDelete" />
+                </content>
+                <tooltip/>
+            </Toolbar>
+            <Table id="batchTable" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" items="{mtable>/batch}">
+                <infoToolbar>
+                    <Toolbar width="100%" height="auto" design="Solid" visible="false" enabled="true">
+                        <content>
+                            <Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                        </content>
+                    </Toolbar>
+                </infoToolbar>
+                <headerToolbar/>
+                <columns>
+                    <Column width="auto" hAlign="Center" vAlign="Middle" minScreenWidth="Phone" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
+                        <header>
+                            <Text text="Batch" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
+                        <header>
+                            <Text text="Good Recieve" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="col-template" type="Inactive" condensed="true">
+                        <cells>
+                            <ComboBox id="bCombo" value="{mtable>number}" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%" items="{dialog>/batch}" selectionChange="selectionChange" >
+                                <items>
+                                    <core:Item text="{dialog>number}" enabled="true" key="Item_{dialog>number}"/>
+                                </items>
+                            </ComboBox>
+                            <Input id="stepinp" value="{mtable>gr}" min="0" displayValuePrecision="0" width="auto" valueState="None" editable="true" enabled="true" liveChange="grChange" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <beginButton/>
+        <buttons>
+            <Button text="OK" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onOK" />
+            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onCloseDialog" />
+        </buttons>
+        <customHeader/>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</core:FragmentDefinition>

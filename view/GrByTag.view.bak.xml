@@ -1,0 +1,167 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" controllerName="com.sap.build.standard.dbiB1Wm012GrToTempCopy.controller.GrByTag">
+    <Page showHeader="true" title="Tag Receive" showFooter="true" showNavButton="false" navButtonPress="_onPageNavButtonPress">
+        <content>
+            <form:Form width="100%" editable="true" visible="true">
+                <form:title>
+                    <core:Title text="Tag Information" level="Auto"/>
+                </form:title>
+                <form:formContainers>
+                    <form:FormContainer visible="true">
+                        <form:formElements>
+                            <form:FormElement visible="true">
+                                <form:label>
+                                    <Label text="Tag ID" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                                </form:label>
+                                <form:fields>
+                                    <Input placeholder="Scan or Key-in" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0" id="tagid" change="tagChange"/>
+                                </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                        <form:title/>
+                    </form:FormContainer>
+                </form:formContainers>
+                <form:layout>
+                    <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+                </form:layout>
+            </form:Form>
+            <Panel height="auto" width="100%" headerText="More" expandable="true" expanded="false" expandAnimation="true" backgroundDesign="Solid">
+                <content>
+                    <form:Form width="100%" editable="true" visible="true">
+                        <form:title/>
+                        <form:formContainers>
+                            <form:FormContainer visible="true">
+                                <form:formElements>
+                                    <form:FormElement visible="true">
+                                        <form:label>
+                                            <Label text="Note" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                                        </form:label>
+                                        <form:fields>
+                                            <Input type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
+                                            <Button text="" type="Default" icon="sap-icon://edit" iconFirst="true" width="50px" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+                                        </form:fields>
+                                    </form:FormElement>
+                                    <form:FormElement visible="false">
+                                        <form:label>
+                                            <Label text="Account" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                                        </form:label>
+                                        <form:fields>
+                                            <Button text="" type="Default" icon="sap-icon://kpi-managing-my-area" iconFirst="true" width="50px" enabled="true" visible="true" iconDensityAware="false"/>
+                                        </form:fields>
+                                    </form:FormElement>
+                                    <form:FormElement visible="false">
+                                        <form:label>
+                                            <Label text="MVT" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                                        </form:label>
+                                        <form:fields>
+                                            <Text text="Default" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                        </form:fields>
+                                    </form:FormElement>
+                                </form:formElements>
+                                <form:title/>
+                            </form:FormContainer>
+                        </form:formContainers>
+                        <form:layout>
+                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+                        </form:layout>
+                    </form:Form>
+                </content>
+            </Panel>
+            <Table id="tagTable" width="100%" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" delete="_onTableDelete" items="{/}" >
+                <infoToolbar>
+                    <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+                        <content> 
+                            <Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                        </content>
+                    </Toolbar>
+                </infoToolbar>
+                <headerToolbar>
+                    <Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
+                        <content>
+                            <Title id="title-toolbar" text="Items (0)" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+                            <ToolbarSpacer width=""/>
+                        </content>
+                        <tooltip/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Order" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column id="col-batch" width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
+                        <header>
+                            <Text text="Batch" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
+                        <header>
+                            <Text text="Good Receive" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Right" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Ordered/Remaing" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="col-list" type="Navigation" press="callFragment">
+                        <cells>
+                            <ObjectIdentifier title="{order}" text="" titleActive="false" visible="true"/>
+                            <ObjectIdentifier title="{number}" text="{description}" titleActive="true" visible="true" titlePress="_onObjectIdentifierTitlePress"/>
+                            <Select id="batchCombo" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%" items="{batch}">
+                                <items>
+                                    <core:Item text="{number}" enabled="true" key="{number}"/>
+                                </items>
+                            </Select>
+                            <StepInput id="taggrinput" value="{gr}" min="0" max="" step="1" largerStep="2" displayValuePrecision="0" width="120px" valueState="None" editable="true" enabled="true"/>
+                            <Label text="{ordered}/{remaining} {uom}" design="Standard" width="100%" required="false" textAlign="End" textDirection="Inherit"/>
+                        </cells>
+                    </ColumnListItem>
+                    <!--<ColumnListItem type="Navigation" press="_onRowPress1">-->
+                    <!--    <cells>-->
+                    <!--        <ObjectIdentifier title="Purchasing - 201000523" text="" titleActive="false" visible="true"/>-->
+                    <!--        <ObjectIdentifier title="332-214" text="Material Name" titleActive="true" visible="true" titlePress="_onObjectIdentifierTitlePress1"/>-->
+                    <!--        <ComboBox selectedKey="Multiple Batch" editable="false" enabled="false" visible="true" width="auto" valueState="None" maxWidth="100%">-->
+                    <!--            <items>-->
+                    <!--                <core:Item text="Item" enabled="true" key="Item"/>-->
+                    <!--                <core:Item text="Item" enabled="true" key="Item"/>-->
+                    <!--                <core:Item text="Item" enabled="true" key="Item"/>-->
+                    <!--            </items>-->
+                    <!--        </ComboBox>-->
+                    <!--        <StepInput value="20" min="0" max="10" step="1" largerStep="2" displayValuePrecision="0" width="120px" valueState="None" editable="false" enabled="false"/>-->
+                    <!--        <Label text="20/20 EA" design="Standard" width="100%" required="false" textAlign="End" textDirection="Inherit"/>-->
+                    <!--    </cells>-->
+                    <!--</ColumnListItem>-->
+                </items>
+            </Table>
+        </content>
+        <footer>
+            <Bar design="Auto">
+                <contentLeft>
+                    <Button text="Clear All" type="Reject" icon="sap-icon://repost" iconFirst="true" width="150px" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress1"/>
+                </contentLeft>
+                <contentMiddle/>
+                <contentRight>
+                    <Button text="Confirm" type="Accept" icon="sap-icon://sys-enter-2" iconFirst="true" width="150px" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress2"/>
+                </contentRight>
+            </Bar>
+        </footer>
+        <headerContent>
+            <Button text="" type="Default" icon="sap-icon://collections-insight" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress3"/>
+        </headerContent>
+        <subHeader/>
+        <customHeader/>
+    </Page>
+</mvc:View>

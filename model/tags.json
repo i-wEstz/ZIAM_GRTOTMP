@@ -1,0 +1,70 @@
+{
+  "tags": [
+    {
+      "id": "1000001",
+      "accassignment": {
+        "gl-acc": "0000045010",
+        "cost-center": "Capital stock",
+        "profit-center": "FG17-00019",
+        "order": ""
+      },
+      "note": "PO Note",
+      "items": [
+        {
+          "order": "PO-106500",
+          "type": "PO",
+          "material": [
+            {
+              "number": "SP005",
+              "order": "PO-106500",
+              "description": "Mechanical Seal",
+              "gr" : 30,
+              "ordered": 30,
+              "remaining": 100,
+              "uom": "PC"
+            },
+            {
+              "number": "NL001",
+              "order": "PO-106500",
+              "description": "Screw",
+              "gr" : 10,
+              "ordered": 10,
+              "remaining": 20,
+              "uom": "EA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1000002",
+      "accassignment": {
+        "gl-acc": "0000051000",
+        "cost-center": "Goodwill on consolid",
+        "profit-center": "FG17-00001",
+        "order": ""
+      },
+      "note": "PP Note",
+      "items": [
+        {
+          "order": "PP-206501",
+          "type": "PP",
+          "material": [
+            {
+              "number": "FG0028",
+              "order": "PP-206501",
+              "description": "Finished Good",
+              "gr" : 10,
+              "ordered": 10,
+              "remaining": 50,
+              "uom": "EA",
+              "batch": [],
+              "selectedKey":"", 
+              "selectedBatch": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

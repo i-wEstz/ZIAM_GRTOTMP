@@ -1,0 +1,60 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="com.sap.build.standard.dbiB1Wm012GrToTempCopy.controller.LandingPage" xmlns="sap.m">
+	<Page showHeader="true" title="MAIN MENU" showFooter="false" showNavButton="false">
+		<content>
+			 <VBox alignItems="Stretch" direction="Column" fitContainer="false" width="100%" height="100%" justifyContent="SpaceAround" renderType="Div" visible="true" displayInline="false">
+                <items>
+                    <HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="SpaceAround" renderType="Div" visible="true" displayInline="false">
+                        <items>
+                            <GenericTile header="Tag Receive" subheader="" frameType="OneByOne" press="_onGenericTilePress">
+                                <tileContent/>
+                            </GenericTile>
+                            <GenericTile header="Purchase Order" subheader="" frameType="OneByOne" press="_onGenericTilePress1">
+                                <tileContent/>
+                            </GenericTile>
+                        </items>
+                        <layoutData/>
+                    </HBox>
+                    <HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="SpaceAround" renderType="Div" visible="true" displayInline="false">
+                        <items>
+                            <GenericTile header="Returned DO" subheader="" frameType="OneByOne">
+                                <tileContent/>
+                            </GenericTile>
+                            <GenericTile header="Returned Work Order" subheader="" frameType="OneByOne">
+                                <tileContent/>
+                            </GenericTile>
+                        </items>
+                        <layoutData/>
+                    </HBox>
+                    <HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="SpaceAround" renderType="Div" visible="true" displayInline="false">
+                        <items>
+                            <GenericTile header="Other Receive" subheader="" frameType="OneByOne">
+                                <tileContent/>
+                            </GenericTile>
+                        </items>
+                        <layoutData/>
+                    </HBox>
+                </items>
+                <layoutData/>
+            </VBox>
+            <HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="SpaceAround" renderType="Div" visible="true" displayInline="false">
+                <items/>
+                <layoutData/>
+            </HBox>
+		</content>
+		<footer>
+			<Bar design="Auto">
+				<contentLeft/>
+				<contentMiddle/>
+				<contentRight>
+					<Button text="Approve" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+					<Button text="Reject" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+					<Button text="" type="Default" icon="sap-icon://action" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+				</contentRight>
+			</Bar>
+		</footer>
+		<headerContent/>
+		<subHeader/>
+		<customHeader/>
+	</Page>
+</mvc:View>

@@ -1,0 +1,62 @@
+{
+  "PO": [
+    {
+      "number": "PO100001",
+      "vendor": {
+        "number": "0000100001",
+        "name": "IAM Consulting Company Limited"
+      },
+      "orderdate": "27 Mar 2018",
+      "note": "PO Note",
+      "good-recipient": "Mr.Kritchapon Choktananan",
+      "accassignment": {
+        "gl-acc": "0000045010",
+        "cost-center": "Capital stock",
+        "profit-center": "FG17-00019",
+        "order": ""
+      },
+      "items": [
+        {
+          "line": "010",
+          "number": "000000000000100051",
+          "description": "Office supply",
+          "remaining": 10,
+          "uom": "EA",
+          "goodreceive": "10"
+        },
+        {
+          "line": "020",
+          "number": "FG0028",
+          "description": "Finished Good",
+          "remaining": 200,
+          "uom": "EA",
+          "goodreceive": "200"
+        },
+        {
+          "line": "030",
+          "number": "MZ-FG-C900",
+          "description": "C900 BIKE",
+          "remaining": 5,
+          "uom": "EA",
+          "goodreceive": "5"
+        },
+        {
+          "line": "040",
+          "number": "MZ-FG-M500",
+          "description": "M500 BIKE",
+          "remaining": 7,
+          "uom": "EA",
+          "goodreceive": "7"
+        },
+        {
+          "line": "050",
+          "number": "MZ-RM-C900-01",
+          "description": "Frame 900",
+          "remaining": 50,
+          "uom": "EA",
+          "goodreceive": "50"
+        }
+      ]
+    }
+  ]
+}

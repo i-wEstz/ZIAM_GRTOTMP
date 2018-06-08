@@ -1,0 +1,77 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.dbiB1Wm012GrToTempCopy.controller.MaterialMasterInfoPage" xmlns:uxap="sap.uxap" xmlns="sap.m">
+    <uxap:ObjectPageLayout showTitleInHeaderContent="true" showHeaderContent="true" showAnchorBar="true" showFooter="false" subSectionLayout="TitleOnTop">
+        <uxap:headerContent>
+            <VBox alignItems="Start" direction="Column" fitContainer="true" width="auto" height="auto" justifyContent="Center" renderType="Div" visible="true" displayInline="false">
+                <items>
+                    <Text text="Plant : XXXX" width="auto" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                    <Text text="Storage : XXXX" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                </items>
+                <layoutData/>
+            </VBox>
+            <Label text="Material XXXXXXXXXXXXXXXXXXXXX" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+        </uxap:headerContent>
+        <uxap:headerTitle>
+            <uxap:ObjectPageHeader objectImageURI="/build/uilibraries/content/static/image-canvas.svg" objectTitle="Material : XXXXXX" objectSubtitle="Material Code : 321-241" headerDesign="Light" objectImageShape="Square" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="true">
+                <uxap:actions>
+                    <Button text="" type="Default" icon="sap-icon://sys-cancel-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+                </uxap:actions>
+                <uxap:breadCrumbsLinks/>
+                <uxap:navigationBar/>
+            </uxap:ObjectPageHeader>
+        </uxap:headerTitle>
+        <uxap:sections>
+            <uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Stock" mode="Expanded">
+                        <uxap:blocks>
+                            <Label text="Maximum Stock : 50 EA" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Label text="Reorder Point : 10 EA" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Label text="Min Lot Size :" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Label text="Max Lot Size :" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                        </uxap:blocks>
+                        <uxap:moreBlocks/>
+                        <uxap:actions/>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+                <uxap:customAnchorBarButton/>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Scheduling" mode="Expanded">
+                        <uxap:blocks>
+                            <Label text="In House Production : 0 days" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Label text="GR Processing Time : 10 days" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Label text="Planned Deliv. Time : 15 days" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                        </uxap:blocks>
+                        <uxap:moreBlocks/>
+                        <uxap:actions/>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+                <uxap:customAnchorBarButton/>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Net Requirement Calculation" mode="Expanded">
+                        <uxap:blocks>
+                            <Label text="Safety Stock" design="Bold" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                        </uxap:blocks>
+                        <uxap:moreBlocks/>
+                        <uxap:actions/>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+                <uxap:customAnchorBarButton/>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+        <uxap:footer>
+            <Bar design="Auto">
+                <contentLeft/>
+                <contentMiddle/>
+                <contentRight>
+                    <Button text="Approve" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                    <Button text="Reject" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                    <Button text="" type="Default" icon="sap-icon://action" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                </contentRight>
+            </Bar>
+        </uxap:footer>
+    </uxap:ObjectPageLayout>
+</mvc:View>

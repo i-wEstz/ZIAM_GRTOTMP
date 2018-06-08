@@ -1,0 +1,15 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.dbiB1Wm012GrToTempCopy.controller.Dialog1" xmlns="sap.m">
+    <Dialog horizontalScrolling="true" icon="sap-icon://pool" showHeader="true" state="None" stretch="false" title="Input GR Amount" type="Standard" verticalScrolling="true">
+        <content>
+            <Input value="" placeholder="GR Amount" type="Number" description="EA" showValueHelp="false" enabled="true" visible="true" width="362.9375px" valueHelpOnly="false" maxLength="0"/>
+        </content>
+        <beginButton/>
+        <buttons>
+            <Button text="OK" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+            <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress1"/>
+        </buttons>
+        <customHeader/>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</mvc:View>
