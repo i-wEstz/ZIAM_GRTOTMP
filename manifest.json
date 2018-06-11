@@ -28,6 +28,14 @@
 			"batch_ds": {
 				"uri": "model/batch.json",
 				"type": "JSON"
+			},
+			"ZSWHB1WM012_SRV": {
+				"uri": "/sap/opu/odata/sap/ZSWHB1WM012_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZSWHB1WM012_SRV/metadata.xml"
+				}
 			}
 		},
 		"title": "{{appTitle}}",
@@ -35,8 +43,8 @@
 		"ach": "ach",
 		"resources": "resources.json",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.32.0"
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
 		}
 	},
 	"sap.ui": {
@@ -80,17 +88,15 @@
 				"uri": "i18n/i18n.properties"
 			},
 			"": {
-				"dataSource": "local",
+				"uri": "/sap/opu/odata/sap/ZSWHB1WM012_SRV/",
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
-					"loadMetadataAsync": false,
-					"json": true,
-					"bJSON": true,
-					"defaultBindingMode": "TwoWay",
-					"useBatch": true,
-					"refreshAfterChange": false,
-					"disableHeadRequestForToken": true
-				}
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZSWHB1WM012_SRV",
+				"preload": true
 			},
 			"tags": {
 				"dataSource": "tags_ds",

@@ -29,15 +29,15 @@
 						</items>
 						<layoutData/>
 					</HBox>
-					<HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="SpaceAround" renderType="Div"
-						visible="true" displayInline="false">
-						<items>
-							<GenericTile header="Other Receive" subheader="" frameType="OneByOne">
-								<tileContent/>
-							</GenericTile>
-						</items>
-						<layoutData/>
-					</HBox>
+					<!--<HBox alignItems="Center" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="SpaceAround" renderType="Div"-->
+					<!--	visible="true" displayInline="false">-->
+					<!--	<items>-->
+					<!--		<GenericTile header="Other Receive" subheader="" frameType="OneByOne">-->
+					<!--			<tileContent/>-->
+					<!--		</GenericTile>-->
+					<!--	</items>-->
+					<!--	<layoutData/>-->
+					<!--</HBox>-->
 				</items>
 				<layoutData/>
 			</VBox>
