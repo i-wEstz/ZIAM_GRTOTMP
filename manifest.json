@@ -159,13 +159,27 @@
 					"controlAggregation": "pages",
 					"viewName": "MaterialMasterInfoPage",
 					"viewId": "MaterialMasterInfoPage",
-					"viewLevel": 4,
+					"viewLevel": 6,
 					"transition": "slide"
 				},
 				"GrFromPo": {
 					"controlAggregation": "pages",
 					"viewName": "GrFromPo",
 					"viewId": "GrFromPo",
+					"viewLevel": 5,
+					"transition": "slide"
+				},
+				"ReturnFromDelivery": {
+					"controlAggregation": "pages",
+					"viewName": "ReturnFromDelivery",
+					"viewId": "ReturnFromDelivery",
+					"viewLevel": 4,
+					"transition": "slide"
+				},
+				"ReturnFromWO": {
+					"controlAggregation": "pages",
+					"viewName": "ReturnFromWO",
+					"viewId": "ReturnFromWO",
 					"viewLevel": 3,
 					"transition": "slide"
 				}
@@ -204,6 +218,20 @@
 					"name": "GrFromPo",
 					"target": [
 						"GrFromPo"
+					]
+				},
+				{
+					"pattern": "ReturnFromDelivery/:context:",
+					"name": "ReturnFromDelivery",
+					"target": [
+						"ReturnFromDelivery"
+					]
+				},
+				{
+					"pattern": "ReturnFromWO/:context:",
+					"name": "ReturnFromWO",
+					"target": [
+						"ReturnFromWO"
 					]
 				}
 			]

@@ -146,10 +146,10 @@
 				<!--		iconDensityAware="false" press="_onButtonPress1"/>-->
 				<!--</contentLeft>-->
 				<contentMiddle>
-					<Button text="Clear All" type="Reject" icon="" iconFirst="true" width="50%" enabled="true" visible="true"
-						iconDensityAware="false" press="_onButtonPress1"/>
-					<Button text="Confirm" type="Accept" icon="" iconFirst="true" width="50%" enabled="true" visible="true"
-						iconDensityAware="false" press="_onButtonPress2"/>
+					<Button text="Clear All" type="Reject" icon="" iconFirst="true" width="50%" enabled="true" visible="true" iconDensityAware="false"
+						press="_onButtonPress1"/>
+					<Button text="Confirm" type="Accept" icon="" iconFirst="true" width="50%" enabled="true" visible="true" iconDensityAware="false"
+						press="_onButtonPress2"/>
 				</contentMiddle>
 				<!--<contentRight>-->
 				<!--	<Button text="Confirm" type="Accept" icon="sap-icon://sys-enter-2" iconFirst="true" width="150px" enabled="true" visible="true"-->
