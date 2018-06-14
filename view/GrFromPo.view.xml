@@ -2,8 +2,7 @@
 	controllerName="com.sap.build.standard.dbiB1Wm012GrToTempCopy.controller.GrFromPo" xmlns="sap.m" xmlns:form="sap.ui.layout.form"
 	xmlns:core="sap.ui.core">
 	<html:style>
-		.uomBox {     margin-left: 5px;
-    margin-top: 0.1px!important; }
+		.uomBox { margin-left: 5px; margin-top: 0.1px!important; }
 	</html:style>
 	<Page showHeader="true" title="PURCHASING ORDER RECEIVE" showFooter="true" showNavButton="false" navButtonPress="_onPageNavButtonPress">
 		<content>
@@ -17,7 +16,7 @@
 								</form:label>
 								<form:fields>
 									<Input id="poinput" placeholder="Scan or Key-in" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto"
-										valueHelpOnly="false" maxLength="0" change="poChange"/>
+										valueHelpOnly="false" maxLength="0" change="poInput"/>
 								</form:fields>
 							</form:FormElement>
 						</form:formElements>
@@ -26,7 +25,7 @@
 								<Label text="Good recipient" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
 							</form:label>
 							<form:fields>
-								<Input value="{/good-recipient}" placeholder="Good Recipient" type="Text" showValueHelp="true" enabled="false" visible="true" width="auto"
+								<Input id="grep" value="" placeholder="Good Recipient" type="Text" showValueHelp="true" enabled="false" visible="true" width="auto"
 									valueHelpOnly="false" maxLength="0"/>
 							</form:fields>
 						</form:FormElement>
@@ -37,10 +36,11 @@
 					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
 				</form:layout>
 			</form:Form>
-			<ObjectHeader id="vendorHeader" visible="false" intro="Vendor Information" title="{/vendor/name} ({/vendor/number})" number="" numberUnit=""
-				numberState="None" showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Translucent" condensed="true">
+			<ObjectHeader id="vendorHeader" visible="false" intro="Vendor Information" title="{header>/VendorName} ({header>/VendorNo})" number=""
+				numberUnit="" numberState="None" showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Translucent"
+				condensed="true">
 				<attributes>
-					<ObjectAttribute title="Order Date" text="{/orderdate}" active="false"/>
+					<ObjectAttribute title="Order Date" text="{header>/OrderDate}" active="false"/>
 				</attributes>
 				<statuses/>
 			</ObjectHeader>
@@ -134,8 +134,8 @@
 					</form:Form>
 				</content>
 			</Panel>
-			<Table id="poTable" width="100%" noDataText="No data" mode="Delete" showSeparators="All" growing="true" growingThreshold="20"
-				growingScrollToLoad="true" delete="_onTableDelete" items="{/items}">
+			<Table id="oTable" width="100%" noDataText="No data" mode="Delete" showSeparators="All" growing="true" growingThreshold="20"
+				growingScrollToLoad="true" delete="_onTableDelete" items="{items>/}">
 				<infoToolbar>
 					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
 						<content>
@@ -146,7 +146,7 @@
 				<headerToolbar>
 					<Toolbar width="auto" height="46px" design="Solid" visible="true" enabled="true">
 						<content>
-							<Title id="toolbar" text="Items (0)" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+							<Title id="toolbar" text="Items ({=${items>/}.length})" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
 							<ToolbarSpacer width=""/>
 						</content>
 						<tooltip/>
@@ -188,17 +188,18 @@
 				<items>
 					<ColumnListItem type="Inactive">
 						<cells>
-							<Text text="{line}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
-							<ObjectIdentifier title="{number}" text="{description}" titleActive="true" visible="true" titlePress="_onObjectIdentifierTitlePress"/>
+							<Text text="{items>ItemNo}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							<ObjectIdentifier title="{items>MaterialNo}" text="{items>MaterialDesc}" titleActive="true" visible="true"
+								titlePress="_onObjectIdentifierTitlePress"/>
 							<HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="SpaceBetween" renderType="Div"
 								visible="true" displayInline="false">
 								<items>
-									<StepInput value="{goodreceive}" min="0" max="{remaining}" width="130px" valueState="None" editable="true" enabled="true"
-										liveChange="grChange"/>
-									<Select id="batchCombo" class="uomBox" selectedKey="{uom}" enabled="true" visible="true" width="70px" valueState="None" maxWidth="100%">
+									<StepInput value="{items>CfmQuantity}" min="0" max="{=parseInt(${items>BaseQuantity})}" width="130px" valueState="None" editable="true"
+										enabled="true"/>
+									<Select id="batchCombo" class="uomBox" selectedKey="{items>BaseUom}" enabled="true" visible="true" width="70px" valueState="None"
+										maxWidth="100%" items="{items>uomlist}">
 										<items>
-											<core:Item text="EA" enabled="true" key="EA"/>
-											<core:Item text="PC" enabled="true" key="PC"/>
+											<core:Item text="{items>Meinh}" enabled="true" key="{items>Meinh}"/>
 										</items>
 									</Select>
 								</items>
@@ -212,7 +213,7 @@
 							<!--		<core:Item text="PC" enabled="true" key="PC"/>-->
 							<!--	</items>-->
 							<!--</Select>-->
-							<ObjectNumber number="{remaining}" unit="{uom}" emphasized="true" state="None"/>
+							<ObjectNumber number="{items>BaseQuantity} / {items>OrderQuantity}" unit="{items>BaseUom}" emphasized="true" state="None"/>
 						</cells>
 					</ColumnListItem>
 				</items>

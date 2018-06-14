@@ -54,41 +54,65 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			oModel.submitChanges({
 				groupId: sGroup,
 				success: function(oResponse) {
-					this.oDataHeader = oResponse.__batchResponses[0].data;
-					this.oHeaderModel.setData(this.oDataHeader);
-					this.oDataItems = oResponse.__batchResponses[1].data.results;
-					this.oItemsModel.setData(this.oDataItems);
-					//Read Batch
-					if (this.oItemsModel.getData()[0].OrderType == "PP") {
-						oModel.setDeferredGroups([sGroup2]);
-						for (var i = 0; i < this.oDataItems.length; i++) {
-							var filters = [];
-							filters.push(new Filter("OrderNumber", FilterOperator.EQ, "'" + this.oDataItems[i].OrderNumber + "'"));
-							filters.push(new Filter("MaterialNo", FilterOperator.EQ, "'" + this.oDataItems[i].MaterialNo + "'"));
-							oModel.read("/BatchSet", {
-								groupId: sGroup2,
-								filters: filters
-							});
-						}
-						oModel.submitChanges({
-							groupId: sGroup2,
-							success: function(oBatchResponse) {
-								for (var j = 0; j < this.oDataItems.length; j++) {
-									var size = oBatchResponse.__batchResponses[j].data.results.length - 1;
-									this.oItemsModel.getData()[j].batchlist = oBatchResponse.__batchResponses[j].data.results;
-									this.oItemsModel.getData()[j].selectedBatch = [{
-										number: oBatchResponse.__batchResponses[j].data.results[size].BatchNo,
-										gr: 0
-									}];
-									this.oItemsModel.getData()[j].selectedKey = oBatchResponse.__batchResponses[j].data.results[size].BatchNo;
-								}
-								this.getView().setModel(this.oHeaderModel, "header");
-								this.getView().byId("tagTable").setModel(this.oItemsModel, "items");
-							}.bind(this)
-						});
+					var statusCode;
+					if (oResponse.__batchResponses[0].response === undefined) {
+						statusCode = oResponse.__batchResponses[0].statusCode;
 					} else {
-						this.getView().setModel(this.oHeaderModel, "header");
-						oTable.setModel(this.oItemsModel, "items");
+						statusCode = oResponse.__batchResponses[0].response.statusCode;
+					}
+
+					//Read Batch
+					if (statusCode !== "404") {
+						this.oDataHeader = oResponse.__batchResponses[0].data;
+						this.oHeaderModel.setData(this.oDataHeader);
+						this.oDataItems = oResponse.__batchResponses[1].data.results;
+						for (var i = 0; i < this.oDataItems.length; i++) {
+							this.oDataItems[i].CfmQuantity = this.oDataItems[i].OrderQuantity;
+						}
+						this.oItemsModel.setData(this.oDataItems);
+						if (this.oItemsModel.getData()[0].OrderType == "PP") {
+							oModel.setDeferredGroups([sGroup2]);
+							for (var i = 0; i < this.oDataItems.length; i++) {
+								var filters = [];
+								filters.push(new Filter("OrderNumber", FilterOperator.EQ, "'" + this.oDataItems[i].OrderNumber + "'"));
+								filters.push(new Filter("MaterialNo", FilterOperator.EQ, "'" + this.oDataItems[i].MaterialNo + "'"));
+								oModel.read("/BatchSet", {
+									groupId: sGroup2,
+									filters: filters
+								});
+							}
+							oModel.submitChanges({
+								groupId: sGroup2,
+								success: function(oBatchResponse) {
+									for (var j = 0; j < this.oDataItems.length; j++) {
+										var size = oBatchResponse.__batchResponses[j].data.results.length - 1;
+										this.oItemsModel.getData()[j].batchlist = oBatchResponse.__batchResponses[j].data.results;
+										this.oItemsModel.getData()[j].selectedBatch = [{
+											number: oBatchResponse.__batchResponses[j].data.results[size].BatchNo,
+											gr: 0
+										}];
+										this.oItemsModel.getData()[j].selectedKey = oBatchResponse.__batchResponses[j].data.results[size].BatchNo;
+									}
+									this.getView().setModel(this.oHeaderModel, "header");
+									this.getView().byId("tagTable").setModel(this.oItemsModel, "items");
+								}.bind(this)
+							});
+						} else {
+							this.getView().setModel(this.oHeaderModel, "header");
+							oTable.setModel(this.oItemsModel, "items");
+						}
+					} //Not Found
+					else {
+						var headerModel = this.getView().getModel("header");
+						var itemModel = oTable.getModel("items");
+						if (headerModel && itemModel) {
+							headerModel.setData(null);
+							headerModel.updateBindings(true);
+							itemModel.setData(null);
+							itemModel.updateBindings(true);
+						}
+
+						sap.m.MessageToast.show("ID of Tag not found");
 					}
 				}.bind(this)
 

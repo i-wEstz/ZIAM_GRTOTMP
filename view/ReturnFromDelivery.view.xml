@@ -1,5 +1,5 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.mrpReportGr.controller.ReturnFromDelivery" xmlns="sap.m"
-	xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.dbiB1Wm012GrToTempCopy.controller.ReturnFromDelivery"
+	xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
 	<Page showHeader="true" title="Returned DO" showFooter="true" showNavButton="true" navButtonPress="_onPageNavButtonPress">
 		<content>
 			<form:Form width="100%" editable="true" visible="true">
@@ -14,8 +14,8 @@
 									<Label text="DO Number" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
 								</form:label>
 								<form:fields>
-									<Input placeholder="Scan or Key-in" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
-										maxLength="0"/>
+									<Input id="doinput" placeholder="Scan or Key-in" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto"
+										valueHelpOnly="false" maxLength="0"/>
 									<!--<Button text="" type="Default" icon="sap-icon://bar-code" iconFirst="true" enabled="true" visible="true" iconDensityAware="false"/>-->
 								</form:fields>
 							</form:FormElement>
@@ -27,8 +27,8 @@
 					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
 				</form:layout>
 			</form:Form>
-			<ObjectHeader intro="" title="Customer Name (12523)" number="" numberUnit="" numberState="None" backgroundDesign="Translucent"
-				condensed="true">
+			<ObjectHeader id="customerObject" intro="" title="Customer Name (12523)" number="" numberUnit="" numberState="None"
+				backgroundDesign="Translucent" condensed="true">
 				<attributes>
 					<ObjectAttribute title="Returned Date" text="02/03/2018" active="false"/>
 				</attributes>
@@ -51,7 +51,7 @@
 												iconDensityAware="false" press="_onButtonPress"/>
 										</form:fields>
 									</form:FormElement>
-									<form:FormElement visible="true">
+									<form:FormElement visible="false">
 										<form:label>
 											<Label text="Note" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
 										</form:label>
@@ -82,7 +82,7 @@
 											<Label text="Document Date" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
 										</form:label>
 										<form:fields>
-											<Input placeholder="Good Recipient" type="Date" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
+											<Input placeholder="Good Recipient" type="Date" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false"
 												maxLength="0"/>
 										</form:fields>
 									</form:FormElement>
@@ -109,7 +109,7 @@
 											<Label text="Good recipient" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
 										</form:label>
 										<form:fields>
-											<Input value="Default" placeholder="Good Recipient" type="Text" showValueHelp="true" enabled="true" visible="true" width="auto"
+											<Input value="Default" placeholder="Good Recipient" type="Text" showValueHelp="false" enabled="false" visible="true" width="auto"
 												valueHelpOnly="false" maxLength="0"/>
 										</form:fields>
 									</form:FormElement>
@@ -132,8 +132,8 @@
 					</form:Form>
 				</content>
 			</Panel>
-			<Table width="auto" noDataText="No data" mode="Delete" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
-				class="sapUiResponsiveMargin" delete="_onTableDelete">
+			<Table id="doTable" width="auto" noDataText="No data" mode="Delete" showSeparators="All" growing="true" growingThreshold="20"
+				growingScrollToLoad="true" class="sapUiResponsiveMargin" delete="_onTableDelete">
 				<infoToolbar>
 					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
 						<content>
@@ -144,7 +144,7 @@
 				<headerToolbar>
 					<Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
 						<content>
-							<Title text="Items (3)" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+							<Title id="toolbar" text="Items (3)" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
 							<ToolbarSpacer width=""/>
 						</content>
 						<tooltip/>
@@ -227,21 +227,18 @@
 		</content>
 		<footer>
 			<Bar design="Auto">
-				<contentLeft>
-					<Button text="Clear All" type="Reject" icon="sap-icon://repost" iconFirst="true" width="150px" enabled="true" visible="true"
-						iconDensityAware="false" press="_onButtonPress2"/>
-				</contentLeft>
-				<contentMiddle/>
-				<contentRight>
-					<Button text="Confirm" type="Accept" icon="sap-icon://sys-enter-2" iconFirst="true" width="150px" enabled="true" visible="true"
-						iconDensityAware="false" press="_onButtonPress3"/>
-				</contentRight>
+				<contentMiddle>
+					<Button text="Clear All" type="Reject" icon="" iconFirst="true" width="50%" enabled="true" visible="true" iconDensityAware="false"
+						press="_onButtonPress2"/>
+					<Button text="Confirm" type="Accept" icon="" iconFirst="true" width="50%" enabled="true" visible="true" iconDensityAware="false"
+						press="_onButtonPress3"/>
+				</contentMiddle>
 			</Bar>
 		</footer>
-		<headerContent>
-			<Button text="" type="Default" icon="sap-icon://collections-insight" iconFirst="true" width="auto" enabled="true" visible="true"
-				iconDensityAware="false" press="_onButtonPress4"/>
-		</headerContent>
+		<!--<headerContent>-->
+		<!--	<Button text="" type="Default" icon="sap-icon://collections-insight" iconFirst="true" width="auto" enabled="true" visible="true"-->
+		<!--		iconDensityAware="false" press="_onButtonPress4"/>-->
+		<!--</headerContent>-->
 		<subHeader/>
 		<customHeader/>
 	</Page>

@@ -133,8 +133,8 @@
 							</Select>
 							<StepInput id="taggrinput" value="{items>CfmQuantity}" min="0" max="{=parseInt(${items>OrderQuantity})}" step="1" largerStep="2"
 								displayValuePrecision="0" width="120px" valueState="None" editable="true" enabled="{=${items>selectedBatch}.length === 1}"/>
-							<Label text="{items>OrderQuantity}/{items>BaseQuantity} {items>OrderUom}" design="Standard" width="100%" required="false" textAlign="End"
-								textDirection="Inherit"/>
+							<Label text="{items>OrderQuantity}/{items>BaseQuantity}{items>OrderQuantity} {items>OrderUom}" design="Standard" width="100%"
+								required="false" textAlign="End" textDirection="Inherit"/>
 						</cells>
 					</ColumnListItem>
 				</items>
@@ -158,10 +158,10 @@
 				<!--</contentRight>-->
 			</Bar>
 		</footer>
-		<headerContent>
-			<Button text="" type="Default" icon="sap-icon://collections-insight" iconFirst="true" width="auto" enabled="true" visible="true"
-				iconDensityAware="false" press="callDialog2"/>
-		</headerContent>
+		<!--<headerContent>-->
+		<!--	<Button text="" type="Default" icon="sap-icon://collections-insight" iconFirst="true" width="auto" enabled="true" visible="true"-->
+		<!--		iconDensityAware="false" press="callDialog2"/>-->
+		<!--</headerContent>-->
 		<subHeader/>
 		<customHeader/>
 	</Page>
