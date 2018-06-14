@@ -12,7 +12,7 @@
 								</form:label>
 								<form:fields>
 									<Input placeholder="Scan or Key-in" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
-										maxLength="0" id="tagid" change="tagChange"/>
+										maxLength="0" id="tagid" change="tagInput"/>
 								</form:fields>
 							</form:FormElement>
 						</form:formElements>
@@ -36,8 +36,7 @@
 											<Label text="Note" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
 										</form:label>
 										<form:fields>
-											<Input id="note" type="Text" value="{header>/note}" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false"
-												maxLength="0"/>
+											<Input id="note" type="Text" value="" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
 											<Button text="" type="Default" icon="sap-icon://edit" iconFirst="true" width="50px" enabled="true" visible="true" iconDensityAware="false"
 												press="callDialogNote"/>
 										</form:fields>
@@ -70,7 +69,7 @@
 				</content>
 			</Panel>
 			<Table id="tagTable" width="100%" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20"
-				growingScrollToLoad="true" delete="_onTableDelete" items="{/}">
+				growingScrollToLoad="true" delete="_onTableDelete" items="{items>/}">
 				<infoToolbar>
 					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
 						<content>
@@ -81,7 +80,7 @@
 				<headerToolbar>
 					<Toolbar width="auto" height="46px" design="Solid" visible="true" enabled="true">
 						<content>
-							<Title id="title-toolbar" text="Items (0)" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+							<Title id="title-toolbar" text="Items ({=${items>/}.length})" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
 							<ToolbarSpacer width=""/>
 						</content>
 						<tooltip/>
@@ -100,8 +99,8 @@
 						</header>
 						<footer/>
 					</Column>
-					<Column id="col-batch" width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Block"
-						mergeDuplicates="false">
+					<Column id="col-batch" visible="{=${items>/0/OrderType} === 'PP'}" width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet"
+						demandPopin="true" popinDisplay="Block" mergeDuplicates="false">
 						<header>
 							<Text text="Batch" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
 						</header>
@@ -121,19 +120,21 @@
 					</Column>
 				</columns>
 				<items>
-					<ColumnListItem id="col-list" type="Navigation" press="callFragment">
+					<ColumnListItem id="col-list" type="{path:'items>OrderType', formatter:'.checkListMode'}" press="callFragment">
 						<cells>
-							<ObjectIdentifier title=" {order}" text="" titleActive="false" visible="true"/>
-							<ObjectIdentifier title="{number}" text="{description}" titleActive="true" visible="true" titlePress="_onObjectIdentifierTitlePress"/>
-							<Select id="batchCombo" selectedKey="{selectedKey}" enabled="{=${selectedBatch}.length === 1}" visible="true" width="auto" valueState="None"
-								maxWidth="100%" items="{batch}">
+							<ObjectIdentifier title="{items>OrderNumber}" text="" titleActive="false" visible="true"/>
+							<ObjectIdentifier title="{items>MaterialNo}" text="{items>MaterialDesc}" titleActive="true" visible="true"
+								titlePress="_onObjectIdentifierTitlePress"/>
+							<Select id="batchCombo" selectedKey="{items>selectedKey}" enabled="{=${items>selectedBatch}.length === 1}" visible="true" width="auto"
+								valueState="None" maxWidth="100%" items="{items>batchlist}">
 								<items>
-									<core:Item text="{number}" enabled="true" key="{number}"/>
+									<core:Item text="{items>BatchNo}" enabled="true" key="{items>BatchNo}"/>
 								</items>
 							</Select>
-							<StepInput id="taggrinput" value="{gr}" min="0" max="{ordered}" step="1" largerStep="2" displayValuePrecision="0" width="120px"
-								valueState="None" editable="true" enabled="true"/>
-							<Label text="{ordered}/{remaining} {uom}" design="Standard" width="100%" required="false" textAlign="End" textDirection="Inherit"/>
+							<StepInput id="taggrinput" value="{items>CfmQuantity}" min="0" max="{=parseInt(${items>OrderQuantity})}" step="1" largerStep="2"
+								displayValuePrecision="0" width="120px" valueState="None" editable="true" enabled="{=${items>selectedBatch}.length === 1}"/>
+							<Label text="{items>OrderQuantity}/{items>BaseQuantity} {items>OrderUom}" design="Standard" width="100%" required="false" textAlign="End"
+								textDirection="Inherit"/>
 						</cells>
 					</ColumnListItem>
 				</items>
